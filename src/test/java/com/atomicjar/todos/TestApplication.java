@@ -41,7 +41,7 @@ class DataLoader {
         String serverVersion = DockerClientFactory.instance().getInfo().getServerVersion();
         String title = "Set up and run with Testcontainers desktop app and Testcontainers Cloud!";
 
-        if (serverVersion.endsWith("testcontainerscloud")) {
+        if (serverVersion.contains("testcontainerscloud")) {
             String string = jdbcTemplate.queryForObject("SELECT encode(sha256(?::bytea), 'hex')", String.class, serverVersion);
             title = "I need your root, your RAM, and your CPU cycles";
         }
